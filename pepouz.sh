@@ -99,9 +99,9 @@ EOF
         Apache_Port=$($GREP apache $DESTDIR/netstat_laputen.txt | $AWK '{print $4}' | cut -d':' -f2)
         $WGET -q --no-proxy localhost:$Apache_Port/server-status -O $DESTDIR/server-status.html &
         #commandlinefu tips:
-        #$PS auxw | $GREP apache | $AWK '{print"-p " $2}' | $TIMEOUT ${TOUTSTR} $XARGS $STRACE -ttT -s 4096 2> $DESTDIR/strace_apache.txt &
+        $PS auxw | $GREP apache | $AWK '{print"-p " $2}' | $TIMEOUT ${TOUTSTR} $XARGS $STRACE -ttT -s 4096 2> $DESTDIR/strace_apache.txt &
         # Work in progress...
-        $STRACE -f -ttT -s1024 -p `$PIDOF apache2 | $TR ' ' ','` 2> $DESTDIR/apache2-strace.txt &
+        #$STRACE -f -ttT -s1024 -p `$PIDOF apache2 | $TR ' ' ','` 2> $DESTDIR/apache2-strace.txt &
     fi
 
     $PS faux > $DESTDIR/ps_faux.txt &
