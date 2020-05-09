@@ -38,6 +38,7 @@ TOP=/usr/bin/top
 SLEEP=/bin/sleep
 UNAME=/bin/uname
 W=/usr/bin/w
+DMESG=/bin/dmesg
 #}}}
 
 
@@ -120,4 +121,5 @@ EOF
     $FREE -gth > $DESTDIR/free_gth.txt &
     $W > $DESTDIR/w.txt &
     $IPCS > $DESTDIR/ipcs.txt &
+    $DMESG > $DESTDIR/dmesg.txt &
 ) &
