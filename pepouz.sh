@@ -71,11 +71,12 @@ $CAT << "EOF"
           ,'  ,-----'   |
           `--{__________)
 
-        Pepouz is now running...
+        Pepouz.sh is now running...
 
 EOF
 # subshell
 (
+    # DESTDIR can / must be changed
     DESTDIR="/space/OTHERS/"$($DATE +%Y%m%d-%Hh%Mm%Ss)
     TOUTSTR=15
 
@@ -100,8 +101,6 @@ EOF
         $WGET -q --no-proxy localhost:$Apache_Port/server-status -O $DESTDIR/server-status.html &
         #commandlinefu tips:
         $PS auxw | $GREP apache | $AWK '{print"-p " $2}' | $TIMEOUT ${TOUTSTR} $XARGS $STRACE -ttT -s 4096 2> $DESTDIR/strace_apache.txt &
-        # Work in progress...
-        #$STRACE -f -ttT -s1024 -p `$PIDOF apache2 | $TR ' ' ','` 2> $DESTDIR/apache2-strace.txt &
     fi
 
     $PS faux > $DESTDIR/ps_faux.txt &
