@@ -2,7 +2,7 @@
 
 #### Prerequisites:
 
-- Root access on the server :wink:
+- Root access :sunglasses: 
 - for convenience [set foldmethod=marker (in your ~/.vimrc)]
 
 #### How to:
